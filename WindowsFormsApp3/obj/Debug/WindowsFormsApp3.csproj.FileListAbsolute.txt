@@ -14,3 +14,5 @@ C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsAp
 C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.project.resources
 C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.task.resources
 C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.task_addPerson.resources
+C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.UC_task.resources
+C:\Users\Asus\Desktop\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.role.resources

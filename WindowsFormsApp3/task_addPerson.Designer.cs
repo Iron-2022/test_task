@@ -82,7 +82,7 @@
             this.project_cb.Name = "project_cb";
             this.project_cb.Size = new System.Drawing.Size(234, 39);
             this.project_cb.TabIndex = 4;
-            this.project_cb.SelectedIndexChanged += new System.EventHandler(this.project_cb_SelectedIndexChanged);
+            this.project_cb.Click += new System.EventHandler(this.project_cb_Click);
             // 
             // task_cb
             // 
@@ -91,7 +91,7 @@
             this.task_cb.Name = "task_cb";
             this.task_cb.Size = new System.Drawing.Size(234, 39);
             this.task_cb.TabIndex = 5;
-            this.task_cb.SelectedIndexChanged += new System.EventHandler(this.task_cb_SelectedIndexChanged);
+            this.task_cb.Click += new System.EventHandler(this.task_cb_Click);
             // 
             // button1
             // 
@@ -116,12 +116,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "task_addPerson";
             this.Text = "Назначить задачу";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.task_addPerson_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.task_addPerson_FormClosed);
             this.Load += new System.EventHandler(this.task_addPerson_Load);
+            this.Shown += new System.EventHandler(this.task_addPerson_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

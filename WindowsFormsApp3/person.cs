@@ -35,6 +35,7 @@ namespace WindowsFormsApp3
                     using (StreamWriter sw = new StreamWriter(path))
                     {
                         sw.WriteLine(name_tb.Text + "_" + login_tb.Text + "_" + password_tb.Text);
+                        sw.WriteLine(role_cb.Text);
                     }
                 }
             }
@@ -46,21 +47,29 @@ namespace WindowsFormsApp3
 
         private void person_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void person_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void person_Load(object sender, EventArgs e)
         {
-
+            Program.direct("person");
+            string path_directory = "role";
+            if (Directory.Exists(path_directory))
+            {
+                foreach (string str in Directory.GetFiles(path_directory))
+                {
+                    int startIndex = str.IndexOf('\\');
+                    int endIndex = str.LastIndexOf('.');
+                    string str_clon = str.Substring(startIndex + 1, endIndex - startIndex - 1);
+                    role_cb.Items.Add(str_clon);
+                }
+            }
         }
+
     }
 }

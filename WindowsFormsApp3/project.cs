@@ -24,7 +24,7 @@ namespace WindowsFormsApp3
             if (Directory.Exists(path_directory))
             {
                 int i = Directory.GetFiles(path_directory).Count();
-                string path = name_tb.Text.ToString() + i.ToString();
+                string path = path_directory + "/" + name_tb.Text.ToString() + i.ToString() + ".txt";
                 FileInfo fileInfo = new FileInfo(path);
                 if (fileInfo.Exists)
                 {
@@ -46,16 +46,12 @@ namespace WindowsFormsApp3
 
         private void project_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void project_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void person_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,8 +60,15 @@ namespace WindowsFormsApp3
 
         private void project_Load(object sender, EventArgs e)
         {
+            Program.direct("project");
             string path_directory = "person";
-            person_cb.Items.AddRange(new object[] { Directory.GetFiles(path_directory) });
+            foreach (string str in Directory.GetFiles(path_directory))
+            {
+                int startIndex = str.IndexOf('\\');
+                int endIndex = str.LastIndexOf('.');
+                string str_clon = str.Substring(startIndex + 1, endIndex - startIndex - 1);
+                person_cb.Items.Add(str_clon);
+            }
         }
     }
 }

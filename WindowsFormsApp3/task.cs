@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace WindowsFormsApp3
 {
     public partial class task : Form
     {
+        bool flag_create = true;
         public task()
         {
             InitializeComponent();
@@ -21,7 +23,21 @@ namespace WindowsFormsApp3
         private void task_Load(object sender, EventArgs e)
         {
             string path_directory = "project";
-            project_cb.Items.AddRange(new object[] { Directory.GetFiles(path_directory) });
+            if (Directory.Exists(path_directory))
+            {
+                foreach (string str in Directory.GetFiles(path_directory))
+                {
+                    int startIndex = str.IndexOf('\\');
+                    int endIndex = str.LastIndexOf('.');
+                    string str_clon = str.Substring(startIndex + 1, endIndex - startIndex - 1);
+                    project_cb.Items.Add(str_clon);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нет проектов в которых можно создать задачу");
+                flag_create = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,7 +46,7 @@ namespace WindowsFormsApp3
             if (Directory.Exists(path_directory))
             {
                 int i = Directory.GetFiles(path_directory).Count();
-                string path = project_cb.Text + i.ToString();
+                string path = path_directory + "/" + project_cb.Text + i.ToString() + ".txt";
                 FileInfo fileInfo = new FileInfo(path);
                 if (fileInfo.Exists)
                 {
@@ -52,16 +68,17 @@ namespace WindowsFormsApp3
 
         private void task_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void task_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form2 form = new Form2();
             this.Hide();
-            form.ShowDialog();
+        }
+
+        private void task_Shown(object sender, EventArgs e)
+        {
+            if (!flag_create) { this.Hide(); }
         }
     }
 }
